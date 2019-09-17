@@ -175,6 +175,32 @@ def calc_bleu(ref, translation):
 #     vars = [v for v in sorted(var_to_shape_map) if filter not in v]
 #     return vars
 
+def getParamNumbers(model_name="iwslt2016_E02L5.03-3058"):
+    from tensorflow.python import pywrap_tensorflow
+    import os
+    import numpy as np
+    model_dir = "log/1/"
+    checkpoint_path = os.path.join(model_dir, model_name)
+    reader = pywrap_tensorflow.NewCheckpointReader(checkpoint_path)
+    var_to_shape_map = reader.get_variable_to_shape_map()
+    total_parameters = 0
+    for key in var_to_shape_map:#list the keys of the model
+        # print(key)
+        # print(reader.get_tensor(key))
+        shape = np.shape(reader.get_tensor(key))  #get the shape of the tensor in the model
+        shape = list(shape)
+        # print(shape)
+        # print(len(shape))
+        variable_parameters = 1
+        for dim in shape:
+            # print(dim)
+            variable_parameters *= dim
+        # print(variable_parameters)
+        total_parameters += variable_parameters
 
+    return total_parameters
 
+if __name__ == '__main__':
+    nums = getParamNumbers()
+    print ("params: ",nums)
 

@@ -50,7 +50,9 @@ y_hat, eval_summaries = m.eval(xs, ys)
 
 logging.info("# Session")
 saver = tf.train.Saver(max_to_keep=hp.num_epochs)
-with tf.Session() as sess:
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+with tf.Session(config=config) as sess:
     ckpt = tf.train.latest_checkpoint(hp.logdir)
     if ckpt is None:
         logging.info("Initializing from scratch")
