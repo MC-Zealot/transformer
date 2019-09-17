@@ -53,7 +53,6 @@ saver = tf.train.Saver(max_to_keep=hp.num_epochs)
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 with tf.Session(config=config) as sess:
-#with tf.Session() as sess:
     ckpt = tf.train.latest_checkpoint(hp.logdir)
     if ckpt is None:
         logging.info("Initializing from scratch")
