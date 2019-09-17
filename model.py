@@ -47,7 +47,7 @@ class Transformer:
             enc = tf.nn.embedding_lookup(self.embeddings, x) # (N, T1, d_model)
             enc *= self.hp.d_model**0.5 # scale
 
-            enc += positional_encoding(enc, self.hp.maxlen1)
+#            enc += positional_encoding(enc, self.hp.maxlen1)
             enc = tf.layers.dropout(enc, self.hp.dropout_rate, training=training)
 
             ## Blocks
@@ -83,7 +83,7 @@ class Transformer:
             dec = tf.nn.embedding_lookup(self.embeddings, decoder_inputs)  # (N, T2, d_model)
             dec *= self.hp.d_model ** 0.5  # scale
 
-            dec += positional_encoding(dec, self.hp.maxlen2)
+#            dec += positional_encoding(dec, self.hp.maxlen2)
             dec = tf.layers.dropout(dec, self.hp.dropout_rate, training=training)
 
             # Blocks

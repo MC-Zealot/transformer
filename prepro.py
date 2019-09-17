@@ -51,12 +51,12 @@ def prepro(hp):
     assert len(prepro_test1) == len(prepro_test2), "Check if test source and target files match."
 
     logging.info("Let's see how preprocessed data look like")
-    logging.info("prepro_train1:", prepro_train1[0])
-    logging.info("prepro_train2:", prepro_train2[0])
-    logging.info("prepro_eval1:", prepro_eval1[0])
-    logging.info("prepro_eval2:", prepro_eval2[0])
-    logging.info("prepro_test1:", prepro_test1[0])
-    logging.info("prepro_test2:", prepro_test2[0])
+    #logging.info("prepro_train1:", str(prepro_train1[0]))
+    #logging.info("prepro_train2:", str(prepro_train2[0]))
+    #logging.info("prepro_eval1:", str(prepro_eval1[0]))
+    #logging.info("prepro_eval2:", str(prepro_eval2[0]))
+    #logging.info("prepro_test1:", str(prepro_test1[0]))
+    #logging.info("prepro_test2:", str(prepro_test2[0]))
 
     logging.info("# write preprocessed files to disk")
     os.makedirs("iwslt2016/prepro", exist_ok=True)
