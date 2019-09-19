@@ -101,3 +101,7 @@ ENV/
 corpora
 logdir
 preprocessed
+eval
+log
+test
+iwslt2016
